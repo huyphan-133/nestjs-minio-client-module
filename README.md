@@ -32,6 +32,16 @@
 $ npm install
 ```
 
+## Env
+```bash
+minio_endpoint=minio
+minio_port=9000
+minio_use_ssl=false # If on localhost, keep it at false. If deployed on https, change to true
+minio_access_key=your-access-key
+minio_secret_key=your-secret-key
+minio_bucket_name=your-bucket
+```
+
 ## Running the app
 
 ```bash
