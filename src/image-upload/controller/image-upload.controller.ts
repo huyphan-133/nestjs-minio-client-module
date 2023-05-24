@@ -1,4 +1,4 @@
-import { Controller, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Delete, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { BufferedFile } from "src/minio-client/dto/minio-client.dto";
 import { ImageUploadService } from "../service/image-upload.service";
@@ -11,5 +11,10 @@ export class ImageUploadController{
     @UseInterceptors(FileInterceptor('image'))
     async uploadImage(@UploadedFile() image: BufferedFile){
         return await this.imageUploadService.uploadImage(image);
+    }
+
+    @Delete()
+    async deleteImage(@Body() body: any){
+        return this.imageUploadService.deleteImage(body.objectName)
     }
 }

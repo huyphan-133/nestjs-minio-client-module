@@ -49,6 +49,7 @@ export class MinioClientService {
       metaData,
       function (err, res) {
         if (err) {
+          console.log(err);
           throw new HttpException(
             'Error uploading file',
             HttpStatus.BAD_REQUEST,
@@ -62,8 +63,8 @@ export class MinioClientService {
     };
   }
 
-  async delete(objetName: string, bucketName: string = this.bucketName) {
-    this.client.removeObject(bucketName, objetName, function (err, res) {
+  async delete(objectName: string, bucketName: string = this.bucketName) {
+    this.client.removeObject(bucketName, objectName, function (err, res) {
       if (err)
         throw new HttpException(
           'An error occured when deleting!',

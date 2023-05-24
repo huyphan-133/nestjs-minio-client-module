@@ -14,4 +14,8 @@ export class ImageUploadService {
             message: 'Image upload successful'
         }
     }
+
+    async deleteImage(objectName: string): Promise<void> {
+        await this.minioClientService.delete(objectName)
+    }
 }
